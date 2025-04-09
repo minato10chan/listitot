@@ -41,7 +41,7 @@ class AjsmScraper:
             dismiss_buttons = self.driver.find_elements(By.CSS_SELECTOR, "div#dismiss-button")
             if dismiss_buttons:
                 dismiss_buttons[0].click()
-                time.sleep(1)  # 広告が消えるのを待つ
+                time.sleep(3)  # 広告が消えるのを待つ
             
             # メインフレームに戻る
             self.driver.switch_to.default_content()
@@ -116,7 +116,7 @@ class AjsmScraper:
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.TAG_NAME, "body"))
             )
-            time.sleep(3)  # 追加の待機時間
+            time.sleep(10)  # 追加の待機時間
             
             # 広告を消す
             self.dismiss_ad()
@@ -210,7 +210,7 @@ class AjsmScraper:
                     self.save_store_data(data, filename)
                 
                 # サーバー負荷軽減のための待機
-                time.sleep(2)
+                time.sleep(10)
             except Exception as e:
                 print(f"自治体 {municipality['name']} の処理中にエラーが発生しました: {str(e)}")
                 continue
